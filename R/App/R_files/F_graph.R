@@ -1,4 +1,4 @@
-source("R_files/F_crawl_individual_time_series.R")
+source("R_files/set_up_shiny.R")
 
 #Format the data to be used for charting
 df_format_data = function(sp_index_name){

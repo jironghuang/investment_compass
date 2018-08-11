@@ -10,8 +10,9 @@ function(input, output) {
   
   output$dyn_sidebar <- renderUI({
     
+    #Select STI as default
     if (input$tab == "viz") {
-      dyn_ui <- list(selectInput("dropdown1", label = "Select Index", selected = dgIndex_list$ticker[2], choices = c(dgIndex_list$ticker))
+      dyn_ui <- list(selectInput("dropdown1", label = "Select Index", selected = dgIndex_list$ticker[19], choices = c(dgIndex_list$ticker))
       )
     }  
     

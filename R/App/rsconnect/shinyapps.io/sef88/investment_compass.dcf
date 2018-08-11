@@ -5,6 +5,6 @@ account: sef88
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 395313
-bundleId: 1518936
+bundleId: 1530166
 url: https://sef88.shinyapps.io/investment_compass/
-when: 1533455671.57321
+when: 1533994925.00411

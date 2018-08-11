@@ -2,7 +2,7 @@ source("R_files/F_graph.R")
 
 ui <- dashboardPage(
   ############Header#######
-  dashboardHeader(title = "Investment Compass"),  
+  dashboardHeader(title = "Investment Compass (Beta version: Data extracted in Batch Mode on 11 Aug 18)"),  
   
   ####################Sidebar#######  
   dashboardSidebar(
@@ -39,7 +39,7 @@ ui <- dashboardPage(
               fluidRow(HTML("<h3>This interactive app predicts the expected returns 1,2 & 3 years later based on the % fall from 52 week high today.</h3> 
                              <h3>The model is built around a simple philosophy - The greater fall in market prices today, the higher the expected future returns.</h3> 
                              <h3>Pls visit the following </a><a href=\"https://www.linkedin.com/pulse/investment-compass-our-volatile-times-jirong-huang\">Article </a>for the full explanation.</h3>
-                             <h3>Note: Current Beta version is based on batch data extracted on 5th August 2018 instead of linking directly to Yahoo / Google API</h3>"))
+                             <h3>Note: Current Beta version is based on batch data instead of linking directly to Yahoo / Google API</h3>"))
       )      
       
     ) 

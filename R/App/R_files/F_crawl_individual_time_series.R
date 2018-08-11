@@ -1,4 +1,4 @@
-source("R_files/setup.R")
+source("./R/App/R_files/setup_crawl.R")
 
 #Load the index list
 vf_index_list()

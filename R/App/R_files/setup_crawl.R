@@ -24,6 +24,6 @@ require("DT")
 
 # Load the ticker symbols
 vf_index_list = function(){
-  dIndex_list = read.csv("Data/input/index_list.csv", stringsAsFactors = F)
+  dIndex_list = read.csv("./R/App/Data/input/index_list.csv", stringsAsFactors = F)
   assign("dgIndex_list", dIndex_list, envir = globalenv())
 }
