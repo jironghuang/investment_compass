@@ -1,28 +1,43 @@
 source("R_files/set_up_shiny.R")
+source("R_files/F_crawl_individual_time_series.R")
 
 #Format the data to be used for charting
 df_format_data = function(sp_index_name){
 
   # stock_price = dp_index_data  
-  sp_index_name = gsub("\\^", "", sp_index_name)
-  stock_price = paste0("Data/output/",sp_index_name,".csv")
-  stock_price = read.csv(stock_price, stringsAsFactors = F)
+  #sp_index_name = gsub("\\^", "", sp_index_name)
+  #stock_price = paste0("Data/output/",sp_index_name,".csv")
+  #stock_price = read.csv(stock_price, stringsAsFactors = F)
+  
+  stock_price  = vf_crawl_time_series_ticker(sp_index_name)
       
   #create a loop and lag x times
   lag_days = 251
   
-  # stk_price = function(lag_days){
-  for(i in 1:lag_days) { #lag_days = 260
-    
-    # as.data.frame(lag(stock_price,i))
-    a = assign(paste("lag",i,sep=""),as.data.frame(lag(stock_price[,4],i)))
+  gen_lag = function(i){
+    a = data.frame(lag(stock_price[,4],i))
     names(a) = paste("lag",i)
-    
-    stock_price = cbind(stock_price,a)
-    rm(list = ls()[grepl("lag", ls())]) #remove lags from each iteration, ls refers to list of dataframes
+    return(a)
   }
   
-  nrows = dim(a)[1]
+  list_data = lapply(1:lag_days, gen_lag)
+  list_data = bind_cols(list_data)
+  stock_price = cbind(stock_price, list_data)  
+  
+  nrows = dim(stock_price)[1]
+  
+  # # stk_price = function(lag_days){
+  # for(i in 1:lag_days) { #lag_days = 260
+  #   
+  #   # as.data.frame(lag(stock_price,i))
+  #   a = assign(paste("lag",i,sep=""),as.data.frame(lag(stock_price[,4],i)))
+  #   names(a) = paste("lag",i)
+  #   
+  #   stock_price = cbind(stock_price,a)
+  #   rm(list = ls()[grepl("lag", ls())]) #remove lags from each iteration, ls refers to list of dataframes
+  # }
+  # 
+  # nrows = dim(a)[1]
   
   #Create a % of 52 week high, 52 week low
   #% 52 week high
